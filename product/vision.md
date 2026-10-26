@@ -2,30 +2,48 @@
 
 *Vision synthétique fondée sur le [Document de spécification produit v2.1](./Document-de-spécifications-produit-v2.1.pptx).*
 
-## Problème
+## Notre vision
 
-Dans les familles, les recettes sont dispersées entre carnets, photos, messages et transmission orale. Elles deviennent difficiles à retrouver et à transmettre ; leurs variantes et les souvenirs associés risquent de se perdre. Les formats existants ne fournissent pas d’espace commun pour les centraliser et les enrichir.
+**Faire de chaque recette un lien entre les générations.**
 
-## Utilisateurs concernés
+Bon App’ veut préserver le patrimoine culinaire familial et le faire vivre. Une recette n’est pas seulement une liste d’ingrédients et d’étapes : elle porte des gestes, des variantes, des souvenirs et des histoires. En les rassemblant dans un espace vivant et partagé, Bon App’ aide les familles à garder cet héritage, à le transmettre et à continuer de l’enrichir ensemble.
 
-Bon App’ s’adresse aux familles, en particulier aux aînés qui transmettent un savoir-faire, aux parents qui reçoivent des recettes par messagerie et aux cuisiniers amateurs qui créent des recettes et les partagent. Simplicité et accessibilité à tous les âges sont des principes UX fondamentaux.
+## Le problème auquel nous répondons
 
-## Proposition de valeur et objectifs
+Les recettes familiales sont dispersées entre carnets manuscrits, photos, messages et transmission orale. Elles deviennent difficiles à retrouver et à transmettre ; leurs variantes et les souvenirs qui les accompagnent risquent de se perdre. Les outils courants conservent des contenus, mais ne donnent pas aux familles un espace commun pour les organiser, les enrichir et les faire vivre.
 
-Bon App’ transforme des recettes dispersées en un patrimoine familial structuré et partageable. Chaque membre peut les capturer, les retrouver et les enrichir de photos, d’anecdotes ou de variantes : la recette et son histoire se transmettent ensemble.
+## Pour qui
 
-L’intention produit est de centraliser et structurer les recettes, de faciliter leur capture et leur recherche, de permettre le partage au sein d’espaces familiaux et de préserver leur contexte personnel.
+Bon App’ s’adresse aux familles et à leurs membres, notamment :
 
-## Périmètre initial
+- aux aînés qui souhaitent transmettre leurs recettes et leur savoir-faire ;
+- aux parents qui reçoivent des recettes par messagerie et veulent les retrouver facilement ;
+- aux cuisiniers amateurs qui créent des recettes, les font évoluer et les partagent.
 
-La phase 1 couvre la capture depuis une photo ou un message (WhatsApp/SMS), l’extraction OCR que l’utilisateur peut corriger et les fiches structurées (ingrédients, étapes, temps, portions et tags). Elle comprend les espaces familiaux avec rôles simples, le partage privé, les commentaires, les variantes, la recherche et l’ajout d’anecdotes ou de médias. Les recettes sont privées par défaut.
+L’expérience doit rester simple et accessible à tous les âges, sans sacrifier la richesse des usages.
 
-## Hors périmètre initial
+## Notre promesse
 
-L’assistant de cuisine, les livres imprimés, le fil d’actualité familial, les recommandations et analyses par IA, les appareils connectés, les partenariats et l’internationalisation avancée relèvent de phases ultérieures.
+Transformer des fragments dispersés en un patrimoine culinaire familial structuré, retrouvable et partageable. Chacun peut capturer une recette, la corriger et l’organiser, puis lui ajouter des variantes, des anecdotes et des médias. La recette et son histoire se transmettent ensemble.
 
-## Mesure et indicateurs du MVP
+## Principes directeurs
 
-1. **Rapidité de capture :** mesurer, pour chaque import photo, le temps entre la confirmation de l’import et l’obtention d’une fiche propre, structurée et partageable. La cible est de moins de 10 secondes.
-2. **Centralisation :** nombre de recettes ajoutées et lues par utilisateur. La cible est d’ajouter 10 recettes par utilisateur au cours du premier mois après son inscription et d’en lire au moins une par mois.
-3. **Transmission et mémoire :** part des recettes partagées et part des recettes enrichies d’une anecdote, d’une photo ou d’une variante. Cible : au moins 25 % des recettes sont partagées ou enrichies d’une anecdote, d’une photo ou d’une variante.
+- **Préserver :** donner aux recettes un lieu durable où elles peuvent être retrouvées et documentées.
+- **Transmettre :** faciliter le partage et la collaboration entre générations.
+- **Rassembler :** faire de la cuisine un lien familial, et pas seulement une activité individuelle.
+- **Rester accessible :** privilégier une expérience claire, fluide et adaptée à tous les âges.
+- **Respecter la confiance :** garder les recettes privées par défaut et laisser leur propriétaire maîtriser leur partage.
+
+## Première étape : le MVP
+
+La phase 1 concrétise cette vision avec la capture depuis une photo ou un message (WhatsApp/SMS), l’extraction OCR corrigible par l’utilisateur et des fiches structurées. Elle comprend aussi les espaces familiaux avec rôles simples, le partage privé, les commentaires, les variantes, la recherche et l’ajout d’anecdotes ou de médias.
+
+## La suite
+
+Les phases suivantes pourront prolonger l’expérience avec l’assistant de cuisine, les livres imprimés et le fil d’actualité familial, puis les appareils connectés, les recommandations et analyses par IA, les partenariats culturels et l’internationalisation avancée. Ces évolutions doivent renforcer la transmission et la mémoire, plutôt que détourner le produit de sa vocation familiale.
+
+## Comment mesurer les progrès du MVP
+
+1. **Capture :** mesurer le temps entre la confirmation de l’import d’une photo et l’obtention d’une fiche propre, structurée et partageable. La spécification fixe une cible de moins de 10 secondes.
+2. **Centralisation :** suivre le nombre de recettes ajoutées et lues par utilisateur. Les cibles de travail sont 10 recettes ajoutées au cours du premier mois après l’inscription et au moins une recette lue par mois.
+3. **Transmission et mémoire :** suivre séparément la part des recettes partagées et la part des recettes enrichies d’une anecdote, d’une photo ou d’une variante. La spécification identifie l’enrichissement comme un indicateur clé ; la cible de travail est qu’au moins 25 % des recettes soient partagées ou enrichies.
