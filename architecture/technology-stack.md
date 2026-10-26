@@ -1,14 +1,8 @@
 # Pile technique — Bon App’
 
-> **Statut : proposition de référence, à valider avant l’initialisation du code.**
-> Le dépôt contient les répertoires d’applications, mais aucun manifeste, code applicatif,
-> fournisseur d’hébergement ou décision d’architecture déjà adopté. Les choix ci-dessous
-> constituent donc une proposition et non la description d’une pile déjà en production.
->
 > **Périmètre de référence :** MVP web, mobile iOS/Android et API. L’application web et les
 > applications mobiles partagent autant que possible le même code et les mêmes fonctionnalités
-> métier. La spécification décrit une application mobile, un backend, une base structurée et
-> des services spécialisés, mais ne fixe pas de langage, framework, fournisseur ni version.
+> métier.
 
 ## Principes de choix
 
