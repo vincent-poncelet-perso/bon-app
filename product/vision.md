@@ -26,6 +26,6 @@ L’assistant de cuisine, les livres imprimés, le fil d’actualité familial, 
 
 ## Mesure et indicateurs du MVP
 
-1. **Rapidité de capture :** mesurer, pour chaque import photo, le temps entre la confirmation de l’import et l’obtention d’une fiche propre, structurée et partageable. La cible est moins de 10 secondes. 
-2. **Centralisation :** nombre de recettes ajoutées et lues par utilisateur. La cible est d'avoir 10 recettes ajoutées par utilisateur dans le mois d'inscription et au moins une recette de lue par mois.
+1. **Rapidité de capture :** mesurer, pour chaque import photo, le temps entre la confirmation de l’import et l’obtention d’une fiche propre, structurée et partageable. La cible est de moins de 10 secondes.
+2. **Centralisation :** nombre de recettes ajoutées et lues par utilisateur. La cible est d’ajouter 10 recettes par utilisateur au cours du premier mois après son inscription et d’en lire au moins une par mois.
 3. **Transmission et mémoire :** part des recettes partagées et part des recettes enrichies d’une anecdote, d’une photo ou d’une variante. Cible : au moins 25 % des recettes sont partagées ou enrichies d’une anecdote, d’une photo ou d’une variante.
