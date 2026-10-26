@@ -6,7 +6,7 @@
 
 **Faire de chaque recette un lien entre les générations.**
 
-Bon App’ veut préserver le patrimoine culinaire familial et le faire vivre. Une recette n’est pas seulement une liste d’ingrédients et d’étapes : elle porte des gestes, des variantes, des souvenirs et des histoires. En les rassemblant dans un espace vivant et partagé, Bon App’ aide les familles à garder cet héritage, à le transmettre et à continuer de l’enrichir ensemble.
+Bon App’ veut faire vivre le patrimoine culinaire familial. Une recette, c’est aussi les gestes appris, les variantes inventées et les souvenirs partagés autour d’elle. En réunissant ces traces, les familles peuvent transmettre non seulement ce que l’on cuisine, mais aussi les histoires et les savoir-faire qui donnent à chaque recette sa place dans leur mémoire.
 
 ## Le problème auquel nous répondons
 
@@ -24,7 +24,7 @@ L’expérience doit rester simple et accessible à tous les âges, sans sacrifi
 
 ## Notre promesse
 
-Transformer des fragments dispersés en un patrimoine culinaire familial structuré, retrouvable et partageable. Chacun peut capturer une recette, la corriger et l’organiser, puis lui ajouter des variantes, des anecdotes et des médias. La recette et son histoire se transmettent ensemble.
+Rassembler les recettes et les histoires qui les rendent uniques, pour que chaque génération puisse les retrouver, les transmettre et les faire siennes.
 
 ## Principes directeurs
 
@@ -36,14 +36,16 @@ Transformer des fragments dispersés en un patrimoine culinaire familial structu
 
 ## Première étape : le MVP
 
-La phase 1 concrétise cette vision avec la capture depuis une photo ou un message (WhatsApp/SMS), l’extraction OCR corrigible par l’utilisateur et des fiches structurées. Elle comprend aussi les espaces familiaux avec rôles simples, le partage privé, les commentaires, les variantes, la recherche et l’ajout d’anecdotes ou de médias.
+Le MVP donne aux familles un premier espace commun pour capturer, organiser, retrouver et partager leurs recettes, tout en les enrichissant de variantes, d’anecdotes et de médias.
 
 ## La suite
 
-Les phases suivantes pourront prolonger l’expérience avec l’assistant de cuisine, les livres imprimés et le fil d’actualité familial, puis les appareils connectés, les recommandations et analyses par IA, les partenariats culturels et l’internationalisation avancée. Ces évolutions doivent renforcer la transmission et la mémoire, plutôt que détourner le produit de sa vocation familiale.
+Les évolutions futures — de l’accompagnement en cuisine aux livres imprimés — devront prolonger la mémoire et la transmission familiales, sans détourner Bon App’ de sa vocation.
 
 ## Comment mesurer les progrès du MVP
 
-1. **Capture :** mesurer le temps entre la confirmation de l’import d’une photo et l’obtention d’une fiche propre, structurée et partageable. La spécification fixe une cible de moins de 10 secondes.
-2. **Centralisation :** suivre le nombre de recettes ajoutées et lues par utilisateur. Les cibles de travail sont 10 recettes ajoutées au cours du premier mois après l’inscription et au moins une recette lue par mois.
-3. **Transmission et mémoire :** suivre séparément la part des recettes partagées et la part des recettes enrichies d’une anecdote, d’une photo ou d’une variante. La spécification identifie l’enrichissement comme un indicateur clé ; la cible de travail est qu’au moins 25 % des recettes soient partagées ou enrichies.
+Les indicateurs ci-dessous sont des cibles de travail à valider :
+
+1. **Capture :** mesurer le temps entre la confirmation de l’import d’une photo et l’obtention d’une fiche propre, structurée et partageable ; cible : moins de 10 secondes.
+2. **Centralisation :** suivre le nombre de recettes ajoutées et lues par utilisateur ; cibles : 10 recettes ajoutées au cours du premier mois après l’inscription et au moins une recette lue par mois.
+3. **Transmission et mémoire :** suivre séparément la part des recettes partagées et la part des recettes enrichies d’une anecdote, d’une photo ou d’une variante ; cible de travail : au moins 25 % des recettes sont partagées ou enrichies.
