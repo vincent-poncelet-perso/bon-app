@@ -9,6 +9,9 @@
 - Privilégier les solutions gratuites ou libres lorsqu’elles répondent aux besoins.
 - Réutiliser TypeScript et les écrans partagés sur web et mobile afin de limiter le nombre de
   langages et de maintenir une expérience cohérente.
+- Favoriser une architecture et des technologies permettant de déployer facilement
+  l’application dans différents clouds, sans dépendance inutile à un fournisseur ; éviter
+  toutefois la complexité de solutions de portabilité qui ne répondent pas à un besoin établi.
 - Choisir des versions maintenues et compatibles entre elles ; verrouiller les versions
   effectivement installées dans le dépôt avant le développement.
 - Ne pas considérer les services payants ou les intégrations de phases ultérieures comme
