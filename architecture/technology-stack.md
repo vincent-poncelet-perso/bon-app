@@ -28,6 +28,7 @@
 | Navigation multiplateforme | Expo Router fourni avec Expo SDK 58 ; version compatible résolue par le SDK | Navigation et liens profonds sur web, iOS et Android | Une seule définition des routes et des liens profonds pour les trois plateformes | Ajouter un routeur spécifique au web ou au mobile, qui dupliquerait la configuration |
 | Base de données | PostgreSQL 18, dernier correctif de la branche 18 | Données relationnelles : utilisateurs, recettes, ingrédients, variantes, espaces, rôles et métadonnées | Modèle relationnel adapté aux liens et permissions ; logiciel libre, sans licence par utilisateur | MongoDB, moins naturel pour les relations et contraintes d’intégrité centrales ; base propriétaire payante, inutile à ce stade |
 | Gestion des dépendances | pnpm 12.x, correctif exact verrouillé dans `packageManager` | Installation reproductible et gestion des espaces de travail `apps/` et `packages/` | Répond à la structure de dépôt en monorepo et évite de dupliquer les dépendances | npm, qui conviendrait également, mais apporte moins de bénéfice ici pour la gestion d’un monorepo ; Yarn, écarté pour éviter un second gestionnaire |
+| Hébergement du code et CI | GitHub ; GitHub Actions pour les workflows automatisés | Dépôt, revue des changements, suivi des tâches et vérifications à chaque pull request | Centralise la collaboration et permet d’exécuter les scripts existants du projet sans remplacer l’hébergement applicatif ; quotas et fonctionnalités de sécurité à vérifier selon le forfait | Une plateforme Git distincte ajouterait un outil de collaboration et de CI sans besoin établi |
 | Tests API | Jest 30.x, version exacte verrouillée | Tests unitaires et d’intégration de l’API | Écosystème mature et prise en charge par l’outillage NestJS | Mocha/Chai, qui nécessiterait davantage d’assemblage ; plusieurs runners de tests dans la même API |
 | Tests mobile | Jest 30.x avec `jest-expo` compatible avec SDK 58, plus React Native Testing Library compatible | Tests unitaires et de composants de l’application | Permet de tester les composants et comportements mobiles dans la pile Jest retenue | Tests exclusivement manuels, insuffisants pour prévenir les régressions ; un deuxième runner sans besoin établi |
 | Tests navigateur | Playwright 1.x, version exacte verrouillée | Tests de bout en bout dans les navigateurs de bureau et mobiles pour connexion, recettes, recherche, partage et parcours d’import | Un navigateur réel est nécessaire pour valider navigation, rendu responsive et interactions web ; Jest seul ne valide pas ces comportements de bout en bout | Tests manuels uniquement, répétables mais coûteux et non adaptés à la non-régression ; tests Jest seuls, qui ne couvrent pas les intégrations réelles du navigateur |
@@ -40,6 +41,31 @@ marketing ou un site public indexable. Elle doit couvrir les mêmes parcours mé
 mobile ; les capacités propres à l’appareil (caméra, import depuis une messagerie, partage
 système et notifications) utilisent les mécanismes du navigateur ou un parcours de repli. Aucun
 rendu serveur ni framework de référencement n’est retenu en l’absence de besoin public.
+
+## Rôle de GitHub
+
+GitHub est retenu pour héberger le code source et organiser la collaboration : pull requests,
+revues de code, Issues et Projects pour le suivi du travail. Les changements proposés devront
+passer par une pull request ; les vérifications CI requises avant fusion seront définies dans
+les règles de protection de branche.
+
+GitHub Actions exécutera les commandes du dépôt sur les pull requests et les mises à jour de la
+branche principale : installation reproductible avec pnpm et lockfile, vérification des types,
+tests Jest, build de l’API et de l’application, puis tests Playwright lorsqu’un environnement web
+de test est disponible. Les builds et déploiements vers les hébergeurs web ou API pourront être
+déclenchés par Actions, mais nécessiteront un hébergeur et des secrets d’accès distincts. EAS
+Build demeure la solution retenue pour produire les builds mobiles ; Actions peut l’orchestrer,
+sans remplacer EAS ni les comptes Apple et Google.
+
+Dependabot pourra proposer les mises à jour de dépendances et signaler les vulnérabilités
+connues. L’analyse de code et la détection de secrets pourront être activées si elles sont
+disponibles dans le forfait et la configuration du dépôt. Les workflows devront limiter leurs
+permissions et ne pas exposer de secrets aux contributions non fiables. Les quotas, coûts et
+fonctionnalités disponibles dépendent du forfait GitHub et de l’usage.
+
+GitHub ne sert pas de backend Bon App’ : il n’héberge ni l’API de production, ni PostgreSQL, ni
+les photos et autres médias des utilisateurs, et ne fournit pas l’authentification produit ou
+l’OCR. GitHub Pages n’est pas retenu pour l’application métier connectée.
 
 Les numéros de versions majeures constituent le socle de compatibilité. Les versions exactes
 des paquets JavaScript devront être fixées dans `package.json` et le lockfile ; les correctifs
@@ -89,13 +115,18 @@ Avant d’engager l’implémentation, consigner les décisions suivantes dans d
 traduire en manifestes, configurations et procédures :
 
 1. **Responsables et livraison :** propriétaire technique, environnements dev/staging/prod,
-   hébergement, CI, déploiement API, gestion des secrets, observabilité, sauvegardes et
-   restauration. La spécification exige résilience et journalisation, sans service ni
-   responsable désigné.
+   hébergement, configuration des workflows GitHub Actions, déploiement API, gestion des secrets,
+   observabilité, sauvegardes et restauration. La spécification exige résilience et journalisation,
+   sans service ni responsable désigné.
 2. **Versions verrouillées :** version exacte de TypeScript, NestJS, Expo CLI/EAS CLI,
    React Native Web, React DOM, Jest, Playwright, `jest-expo`, React Native Testing Library,
-   PostgreSQL et outils système ; fichier
-   `.nvmrc`/équivalent, champ `packageManager`, lockfile et politique de mise à jour.
+   PostgreSQL et outils système ; fichier `.nvmrc`/équivalent, champ `packageManager`, lockfile
+   et politique de mise à jour. Pour GitHub Actions, choisir les actions utilisées et référencer
+   chacune par son SHA de commit complet, définir les labels de runners nécessaires et fixer
+   explicitement les versions des outils installés par les workflows. Les images des runners
+   hébergés par GitHub évoluant dans le temps, leur label seul ne garantit pas une image
+   immuable. Configurer Dependabot pour proposer les mises à jour des actions, puis les valider
+   par revue et CI.
 3. **Prérequis plateformes :** versions minimales iOS et Android (« versions récentes » est trop
    vague), versions de Xcode, Android SDK, JDK et Gradle compatibles avec Expo SDK 58, comptes
    Apple/Google, signature et distribution ; navigateurs et versions minimales supportés,
@@ -116,8 +147,9 @@ traduire en manifestes, configurations et procédures :
 7. **Qualité et tests :** tests d’intégration API, tests sur appareils iOS/Android réels et
    navigateurs supportés, tests d’accessibilité clavier/lecteurs d’écran, tests utilisateurs
    par persona, seuils de couverture éventuels et tests de performance correspondant aux
-   objectifs de moins de 2 secondes et moins de 300 ms. Les outils CI et critères d’acceptation
-   par plateforme restent à définir.
+   objectifs de moins de 2 secondes et moins de 300 ms. Les commandes et critères d’acceptation
+   par plateforme, ainsi que les règles de fusion et la disponibilité d’appareils réels en CI,
+   restent à définir.
 8. **Parité fonctionnelle web/mobile :** confirmer que le web couvre les mêmes parcours métier
    du MVP. Définir les adaptations nécessaires pour caméra, import WhatsApp/SMS, notifications,
    partage natif, mode hors ligne et autres fonctions dépendant du système.
@@ -134,3 +166,5 @@ traduire en manifestes, configurations et procédures :
 - [Versions Node.js](https://nodejs.org/en/about/previous-releases) — statut LTS des branches.
 - [Politique de versions PostgreSQL](https://www.postgresql.org/support/versioning/) — durée de support et recommandation de correctifs à jour.
 - [Installation pnpm](https://pnpm.io/installation) — ligne de version pnpm 12.
+- [GitHub Actions](https://docs.github.com/actions) — automatisation des workflows de CI et de livraison.
+- [Dependabot](https://docs.github.com/code-security/dependabot) — alertes de dépendances et mises à jour automatisées.
