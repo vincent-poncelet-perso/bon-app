@@ -52,27 +52,60 @@ mode de déploiement.
 Les dossiers ci-dessous expriment des responsabilités ; ils n’imposent pas de créer une couche
 ou un paquet sans code ni besoin réel.
 
-- **Présentation cliente** (`apps/mobile`, `apps/web`) : écrans, navigation, état d’interface,
+- **Client UI** (`apps/mobile`, `apps/web`) : écrans, navigation, état d’interface,
   retours d’erreur et appels aux capacités de l’appareil. Elle ne contient ni accès direct à la
   base de données, ni secret serveur, ni autorité finale sur les permissions.
-- **Cas d’usage client** : orchestration des interactions utilisateur et transformation des
+- **Client Application** : orchestration des interactions utilisateur et transformation des
   résultats API en état d’écran. La logique métier réutilisée par plusieurs applications peut
   être placée dans un paquet partagé si elle n’est pas liée à l’interface ou à une plateforme.
-- **Contrats partagés** (`packages/`) : types et règles de sérialisation réellement communs entre
+- **Shared Contracts** (`packages/`) : types et règles de sérialisation réellement communs entre
   producteurs et consommateurs. Ils ne contiennent ni logique dépendant de NestJS/React, ni
   modèles de persistance exposés directement.
-- **Présentation API** : contrôleurs NestJS, gardes et validateurs d’entrée. Cette couche
+- **API Controller** : contrôleurs NestJS, gardes et validateurs d’entrée. Cette couche
   authentifie/autorise l’accès, valide le protocole et délègue le cas d’usage ; elle ne porte pas
   les règles métier ni les requêtes SQL.
-- **Application API** : cas d’usage qui coordonnent les règles métier, les transactions et les
+- **API Application** : cas d’usage qui coordonnent les règles métier, les transactions et les
   ports nécessaires. Elle ne dépend pas des détails de transport HTTP ou d’un SDK fournisseur.
-- **Domaine métier** : règles et invariants des recettes, espaces, rôles, partage et médias.
+- **Domain** : règles et invariants des recettes, espaces, rôles, partage et médias.
   Cette couche reste indépendante de l’interface, du transport et de la base de données.
-- **Infrastructure API** : adaptateurs PostgreSQL, stockage S3 compatible, authentification,
+- **API Infrastructure** : adaptateurs PostgreSQL, stockage S3 compatible, authentification,
   courriels ou autres fournisseurs approuvés. Elle implémente les interfaces utilisées par les
   cas d’usage et ne décide pas seule des permissions métier.
+- **Data Stores** : PostgreSQL et stockage objet privé compatible S3. Ils sont accessibles
+  uniquement via les adaptateurs de `API Infrastructure` et ne contiennent pas de logique
+  d’autorisation applicative.
 - **Tests** : tests unitaires au plus près des modules ; tests d’intégration aux frontières de
   données et de fournisseurs ; tests de bout en bout transverses dans `tests/e2e/`.
+
+Arborescence logique indicative :
+
+```text
+bon-app/
+├── apps/
+│   ├── mobile/
+│   │   ├── app/                # Client UI: screens and navigation
+│   │   └── src/                # Client Application: client-side use cases
+│   ├── web/
+│   │   ├── app/                # Client UI: screens and navigation
+│   │   └── src/                # Client Application: client-side use cases
+│   └── api/                    # NestJS API
+│       └── src/
+│           └── recipes/        # Example business domain
+│               ├── recipes.controller.ts     # API Controller: HTTP validation and delegation
+│               ├── recipes.service.ts        # API Application: use cases and orchestration
+│               ├── domain/                   # Business rules and invariants
+│               └── infrastructure/           # API Infrastructure: database and provider adapters
+├── packages/
+│   └── recipe-contracts/       # Shared Contracts
+└── tests/
+    └── e2e/                    # Cross-layer end-to-end flows
+```
+
+Cette arborescence illustre la séparation des responsabilités, pas une obligation de créer
+tous ces répertoires à l’avance. Les noms et conventions imposés par NestJS et Expo Router
+peuvent prévaloir, tant que les frontières et le sens des dépendances restent respectés.
+`Data Stores` (PostgreSQL et stockage objet S3) sont des services externes à l’arborescence
+applicative, consommés uniquement par `API Infrastructure`.
 
 La structure interne précise de l’API (par exemple l’usage de ports/adaptateurs) peut rester
 simple tant qu’elle respecte ces frontières. Ne pas introduire des interfaces sans besoin de
@@ -84,37 +117,39 @@ La matrice se lit de la couche appelante (ligne) vers la couche utilisée (colon
 signifie autorisé, `Non` interdit et `Conditionnel` permis uniquement via un contrat explicite,
 avec la justification et les validations indiquées dans les règles ci-dessous.
 
-| Appelante \ Cible | UI client | Cas d’usage client | Packages partagés | Présentation API | Application / domaine API | Infrastructure API | PostgreSQL / stockage S3 |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| UI client | — | Oui | Oui | Non | Non | Non | Non |
-| Cas d’usage client | Oui | — | Oui | Oui, via contrat HTTP | Non | Non | Non |
-| Packages partagés | Non | Non | Conditionnel¹ | Non | Non | Non | Non |
-| Présentation API | Non | Non | Oui, contrats serveur compatibles | — | Oui | Non | Non |
-| Application / domaine API | Non | Non | Conditionnel² | Non | — | Oui, via ports/interfaces | Non |
-| Infrastructure API | Non | Non | Conditionnel² | Non | Oui, pour implémenter les ports | — | Oui |
-| Tests | Oui | Oui | Oui | Oui | Oui | Oui | Conditionnel³ |
+| Caller \ Dependency | Client UI | Client Application | Shared Contracts | API Controller | API Application | Domain | API Infrastructure | Data Stores |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Client UI | — | Oui | Oui | Via API | Non | Non | Non | Non |
+| Client Application | Non | — | Oui | Via API | Non | Non | Non | Non |
+| Shared Contracts | Non | Non | Conditionnel¹ | Non | Non | Non | Non | Non |
+| API Controller | Non | Non | Oui² | — | Oui | Non | Non | Non |
+| API Application | Non | Non | Conditionnel² | Non | — | Oui | Non | Non |
+| Domain | Non | Non | Non | Non | Non | — | Non | Non |
+| API Infrastructure | Non | Non | Conditionnel² | Non | Oui, via ports | Conditionnel² | — | Oui |
+| Data Stores | Non | Non | Non | Non | Non | Non | Non | — |
+| Tests | Oui | Oui | Oui | Oui | Oui | Oui | Oui | Conditionnel³ |
 
-1. Une dépendance entre packages partagés est autorisée si elle est unidirectionnelle,
+1. Une dépendance entre packages `Shared Contracts` est autorisée si elle est unidirectionnelle,
    documentée et sans cycle. Un package partagé ne dépend jamais d’une application.
 2. Autorisé seulement pour des contrats ou types neutres conçus pour le consommateur ; jamais
-   pour des détails propres à une application ou à l’infrastructure.
+   pour des détails propres à une application ou à l’infrastructure. `API Application` dépend
+   du domaine, tandis que le domaine ne dépend jamais de l’application.
 3. Les tests peuvent accéder à des services ou bases de test isolés, jamais aux données ou
    identifiants de production.
 
-`—` indique la même couche et n’est pas une décision de dépendance. Pour la ligne **Cas d’usage
-client**, « via contrat HTTP » signifie que le code client appelle l’API ; il n’importe pas ses
-modules d’exécution NestJS.
+`—` indique la même couche et n’est pas une décision de dépendance. `Via API` signifie un appel
+au contrat réseau, et non une dépendance de code aux modules d’exécution NestJS.
 
 Vue synthétique du sens de dépendance autorisé :
 
 ```text
-apps/mobile ─┐
-             ├──> packages partagés compatibles avec le consommateur
-apps/web ────┘
-
-apps/api ───────> packages explicitement compatibles avec Node.js et le serveur
-apps/api ───────> modules d’application/domaine ───────> ports définis par les cas d’usage
-infrastructure API ────────────────────────────────────> implémente ces ports
+Client UI ────────────────> Client Application
+      └──────────────────> Shared Contracts
+Client Application ──────> Shared Contracts
+Client UI / Application ─> API Controller via API contract
+API Controller ──────────> API Application ────────────> Domain
+API Infrastructure ──────> ports définis par API Application et Domain
+API Infrastructure ──────> Data Stores
 ```
 
 - `apps/` peut dépendre des paquets partagés appropriés. `packages/` ne dépend jamais d’une
