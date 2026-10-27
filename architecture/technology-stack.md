@@ -84,7 +84,7 @@ Ils ne doivent pas être intégrés avant les décisions et contrôles indiqués
 | OCR | Comparer un OCR local gratuit avec Google Cloud Vision et AWS Textract, explicitement cités dans la spécification | Reconnaître le texte des photos de recettes | Le traitement local peut limiter les coûts et l’envoi de données ; les services cloud peuvent offrir un OCR plus robuste, mais impliquent coûts, transfert de données et dépendance fournisseur | **Non autorisé à ce stade.** Mesurer qualité et latence sur un corpus représentatif, notamment contre la cible de moins de 5 secondes ; définir consentement, région de traitement et budget. La spécification ne tranche pas |
 | Compréhension et structuration du texte | À concevoir après évaluation OCR | Transformer le texte reconnu en ingrédients, quantités, unités et étapes, avec correction utilisateur | L’OCR extrait du texte ; la reconnaissance de sections et l’interprétation des recettes sont une responsabilité distincte | **Manquant.** Aucun moteur, règles, modèle, seuil de confiance ni comportement de correction n’est spécifié |
 | Nettoyage d’image | Pipeline à définir et à benchmarker sur appareils cibles | Recadrage, perspective, contraste et suppression d’ombres | La spécification demande ces fonctions, mais ne prescrit aucune bibliothèque ou exécution côté serveur/appareil | **Manquant.** Choisir l’emplacement du traitement, les opérations MVP, leur coût et leur latence |
-| Stockage des médias | Choisir un stockage objet compatible avec le déploiement retenu | Photos, vidéos et notes vocales | Séparer fichiers volumineux des enregistrements relationnels ; un service auto-hébergé peut réduire les frais de licence, mais augmente la charge d’exploitation | **Non autorisé à ce stade.** Fournisseur, quotas, région, chiffrement, sauvegardes, rétention et coûts à décider |
+| Stockage des médias | Stockage objet compatible avec l’API S3 ; fournisseur à sélectionner | Photos, vidéos et notes vocales, avec métadonnées conservées dans PostgreSQL | Sépare les fichiers volumineux des données relationnelles et permet de choisir entre plusieurs fournisseurs compatibles ; l’API S3 ne garantit pas à elle seule une compatibilité identique de toutes les fonctions | **Choix retenu pour le MVP : stockage objet compatible S3.** Sélectionner le fournisseur, vérifier les opérations S3 nécessaires et comparer quotas, région, chiffrement, sauvegardes, rétention et coûts. Les objets doivent rester privés ; définir le contrôle d’accès via l’API et le mécanisme de transfert sécurisé |
 | Notifications push | Apple Push Notification service (APNs) et Firebase Cloud Messaging (FCM), via l’intégration compatible Expo | Notifications de commentaires, variantes et activités | Les notifications natives iOS/Android nécessitent leurs canaux de distribution ; il faut éviter une solution tierce payante tant que les besoins restent standards | **À confirmer.** Choisir l’acheminement Expo ou direct, les identifiants de comptes et les règles de consentement. Une notification push n’équivaut pas à une synchronisation temps réel |
 | Synchronisation et mode hors ligne | À concevoir dans l’application et l’API | Consultation hors ligne et synchronisation au retour réseau | La spécification en fait une exigence ; aucune technologie ni stratégie de résolution des conflits n’est donnée | **Manquant.** Définir stockage local, données disponibles hors ligne, conflits, suppressions et stratégie de reprise |
 | Recherche | Recherche PostgreSQL à évaluer avant l’ajout d’un moteur spécialisé | Filtres par ingrédient, saison, temps, auteur, difficulté et variante | Commencer par la base retenue limite coût et exploitation ; un index dédié ne se justifiera que si la mesure montre que l’objectif de moins de 300 ms n’est pas atteint | **Choix provisoire : PostgreSQL.** Définir corpus, requêtes, pagination et charge de référence ; ne pas ajouter de moteur externe sans benchmark |
@@ -100,14 +100,16 @@ Pour démarrer le MVP, la liste d’autorisation proposée est limitée à :
 - Expo SDK 58 / React Native 0.88 pour les applications web, iOS et Android, avec React Native Web et React DOM aux versions prises en charge par le SDK ;
 - Expo Router dans la version prise en charge par SDK 58 pour la navigation multiplateforme ;
 - PostgreSQL 18 ;
+- stockage objet privé compatible avec l’API S3 pour les médias ; fournisseur et client technique à sélectionner ;
 - pnpm 12.x pour le monorepo ;
 - Jest 30.x et les adaptateurs de test compatibles avec Expo SDK 58 ; Playwright 1.x pour les parcours de bout en bout dans les navigateurs ;
 - Expo CLI pour l’export web et EAS Build pour les builds mobiles ; `tsc` pour compiler l’API.
 
 Cette autorisation reste conditionnée à la validation des versions exactes et de la
-compatibilité Expo au moment de créer les manifestes. Aucun fournisseur OCR, stockage média,
-authentification, hébergement ou impression n’est autorisé par ce document. Le web est une
-cible de l’application Expo partagée, pas un framework web distinct.
+compatibilité Expo au moment de créer les manifestes. Aucun fournisseur OCR, de stockage média,
+d’authentification, d’hébergement ou d’impression n’est retenu par ce document. Pour le stockage
+média, seul le choix d’un service compatible S3 est acté ; le fournisseur reste à sélectionner.
+Le web est une cible de l’application Expo partagée, pas un framework web distinct.
 
 ## Dépendances, versions et responsabilités à compléter
 
@@ -136,10 +138,11 @@ traduire en manifestes, configurations et procédures :
 4. **Données et sécurité :** stratégie de migrations de base, ORM ou accès SQL, modèle de
    permissions, chiffrement et gestion des clés, politique de conservation/suppression,
    consentement, droits RGPD, journalisation des accès sensibles et procédure de violation.
-5. **Médias et fonctionnement hors ligne :** stockage local web/mobile, stockage distant,
-   limites de taille, formats, antivirus/validation, sauvegardes, synchronisation et résolution
-   des conflits. Définir les équivalents web des fonctions natives (sélection de fichiers,
-   caméra, partage système et notifications) et les parcours de repli dans le navigateur.
+5. **Médias et fonctionnement hors ligne :** sélectionner le fournisseur de stockage objet
+   compatible S3 et son client, puis définir stockage local web/mobile, limites de taille,
+   formats, antivirus/validation, sauvegardes, synchronisation et résolution des conflits.
+   Définir les équivalents web des fonctions natives (sélection de fichiers, caméra, partage
+   système et notifications) et les parcours de repli dans le navigateur.
 6. **OCR et performance :** moteur retenu, traitement local ou cloud, qualité minimale,
    corpus de mesure, métrique de latence p95, traitement des erreurs et responsabilité de la
    structuration sémantique. Clarifier aussi la différence entre l’objectif OCR de moins de
