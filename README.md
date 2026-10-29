@@ -9,3 +9,4 @@
 - `operations/` : déploiement, supervision et procédures d’exploitation
 - `marketing/` : positionnement et supports de commercialisation
 - `decisions/` : décisions structurantes et ADR
+- [Checklist de démarrage](product/getting-started-checklist.md) : documents à lire, étapes possibles et éléments restant à définir
