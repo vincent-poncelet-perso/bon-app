@@ -22,6 +22,10 @@ Bon App’ s’adresse aux familles et à leurs membres, notamment :
 
 L’expérience doit rester simple et accessible à tous les âges, sans sacrifier la richesse des usages.
 
+### Catégories d’usage — provisoires
+
+Les documents suggèrent plusieurs pratiques qui peuvent se chevaucher : suivre une recette en cuisinant ; conserver et retrouver une recette pour la refaire ; recevoir des recettes par messagerie pour planifier ; préserver et transmettre des recettes manuscrites et leur histoire ; adapter et partager des recettes. Ces regroupements sont des pistes provisoires, étayées à des niveaux différents par un entretien et les usagers décrits dans la spécification ; les difficultés de recherche, de planification et de transmission restent souvent à vérifier. Voir [Catégories d’utilisateurs](./categories-utilisateurs.md).
+
 ## Notre promesse
 
 Rassembler les recettes et les histoires qui les rendent uniques, pour que chaque génération puisse les retrouver, les transmettre et les faire siennes.
