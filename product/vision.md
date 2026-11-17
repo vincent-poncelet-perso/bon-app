@@ -30,6 +30,14 @@ Les documents suggèrent plusieurs pratiques qui peuvent se chevaucher : suivre 
 
 Rassembler les recettes et les histoires qui les rendent uniques, pour que chaque génération puisse les retrouver, les transmettre et les faire siennes.
 
+## Résultats attendus pour l’utilisateur
+
+Ordre provisoire, fondé sur la force des éléments disponibles — pas sur une validation de priorité auprès d’un groupe d’utilisateurs :
+
+- **En cuisinant, garder plus facilement le fil des étapes et avoir moins besoin de relire la recette pour retrouver où l’on en est.** Signal directement rapporté par U-001 ; à vérifier auprès d’autres personnes. Vérification : fréquence des épisodes de perte du fil suivis d’une relecture ; cible **à définir**. ([Irritants utilisateurs](./user-pain-points.md), IRR-003 ; [Catégories d’utilisateurs](./categories-utilisateurs.md))
+- **En voulant refaire un plat, retrouver la recette choisie et les ajustements qui lui sont associés.** U-001 conserve certaines recettes et leurs ajustements dans Word pour les refaire, mais aucun échec de recherche n’est rapporté : **hypothèse à vérifier**. Vérification : la personne retrouve-t-elle la recette et l’ajustement recherché ? Cible **à définir**. ([Irritants utilisateurs](./user-pain-points.md), IRR-004 ; [Catégories d’utilisateurs](./categories-utilisateurs.md))
+- **Dans une famille, pouvoir retrouver et transmettre les recettes importantes avec le savoir-faire ou les variantes qui leur sont associés.** Aligné sur l’ambition de la section [Notre vision](#notre-vision) ; U-001 juge fragile la transmission papier, sans incident rapporté : **hypothèse à vérifier**. Vérification : exemple concret de recette ou de savoir-faire effectivement transmis, manquant ou risquant de l’être. Cible **à définir**. ([Irritants utilisateurs](./user-pain-points.md), IRR-005 ; [Catégories d’utilisateurs](./categories-utilisateurs.md))
+
 ## Principes directeurs
 
 - **Préserver :** donner aux recettes un lieu durable où elles peuvent être retrouvées et documentées.
