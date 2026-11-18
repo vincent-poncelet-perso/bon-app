@@ -42,6 +42,8 @@ Ordre provisoire, fondé sur la force des éléments disponibles — pas sur une
 
 Ces résultats décrivent les changements recherchés pour la portée, la pérennité et la valeur du produit. Ils ne sont ni des bénéfices directs pour les utilisateurs ni des fonctionnalités à livrer.
 
+Le registre des hypothèses à valider, distinguant les faits documentés des suppositions et couvrant désirabilité, faisabilité, viabilité, sécurité et exploitabilité, est disponible dans [le registre des hypothèses](./hypotheses.md).
+
 ### 1. Faire de Bon App’ l’espace où les recettes familiales sont effectivement centralisées
 
 - **Résultat recherché :** augmenter la part des familles qui utilisent Bon App’ comme lieu durable pour enregistrer, retrouver et conserver leurs recettes, afin de réduire la dispersion décrite dans [Le problème auquel nous répondons](#le-problème-auquel-nous-répondons).
