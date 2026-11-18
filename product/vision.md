@@ -38,6 +38,55 @@ Ordre provisoire, fondé sur la force des éléments disponibles — pas sur une
 - **En voulant refaire un plat, retrouver la recette choisie et les ajustements qui lui sont associés.** U-001 conserve certaines recettes et leurs ajustements dans Word pour les refaire, mais aucun échec de recherche n’est rapporté : **hypothèse à vérifier**. Vérification : la personne retrouve-t-elle la recette et l’ajustement recherché ? Cible **à définir**. ([Irritants utilisateurs](./user-pain-points.md), IRR-004 ; [Catégories d’utilisateurs](./categories-utilisateurs.md))
 - **Dans une famille, pouvoir retrouver et transmettre les recettes importantes avec le savoir-faire ou les variantes qui leur sont associés.** Aligné sur l’ambition de la section [Notre vision](#notre-vision) ; U-001 juge fragile la transmission papier, sans incident rapporté : **hypothèse à vérifier**. Vérification : exemple concret de recette ou de savoir-faire effectivement transmis, manquant ou risquant de l’être. Cible **à définir**. ([Irritants utilisateurs](./user-pain-points.md), IRR-005 ; [Catégories d’utilisateurs](./categories-utilisateurs.md))
 
+## Résultats attendus pour l’organisation
+
+Ces résultats décrivent les changements recherchés pour la portée, la pérennité et la valeur du produit. Ils ne sont ni des bénéfices directs pour les utilisateurs ni des fonctionnalités à livrer.
+
+### 1. Faire de Bon App’ l’espace où les recettes familiales sont effectivement centralisées
+
+- **Résultat recherché :** augmenter la part des familles qui utilisent Bon App’ comme lieu durable pour enregistrer, retrouver et conserver leurs recettes, afin de réduire la dispersion décrite dans [Le problème auquel nous répondons](#le-problème-auquel-nous-répondons).
+- **Indicateur :** proportion des familles actives ayant ajouté au moins une recette consultable dans leur espace commun, et nombre moyen de recettes conservées par famille active.
+- **Méthode de mesure :** suivre les créations et consultations de recettes par famille dans les données produit, puis rapprocher ces usages d’une enquête ou d’entretiens permettant de confirmer que l’application remplace ou complète réellement les supports dispersés.
+- **Valeur initiale :** à mesurer.
+- **Cible :** à définir.
+- **Échéance :** à définir.
+- **Hypothèses à vérifier :**
+  - les familles disposent bien de recettes dispersées qu’elles cherchent à rassembler ;
+  - une famille comprenant plusieurs membres utilise le même espace comme référentiel ;
+  - la centralisation est perçue comme durable plutôt que comme une simple duplication.
+
+**Justification par la vision :** la promesse de « rassembler les recettes et les histoires » suppose un lieu commun durable. Le MVP doit donc donner aux familles un espace pour capturer, organiser et retrouver leurs recettes.
+
+### 2. Faire circuler les recettes et le savoir-faire entre plusieurs générations
+
+- **Résultat recherché :** augmenter la proportion des familles dans lesquelles une recette est partagée ou enrichie avec un membre d’une autre génération, afin de traduire la mémoire familiale en transmission effectivement réalisée.
+- **Indicateur :** proportion des familles actives ayant au moins une recette partagée avec un membre d’une autre génération ou enrichie grâce à sa contribution.
+- **Méthode de mesure :** analyser les invitations acceptées, les contributions et les modifications relatives à une recette, puis qualifier la relation générationnelle par un questionnaire familial ; compléter par des exemples qualitatifs de transmission.
+- **Valeur initiale :** à mesurer.
+- **Cible :** à définir.
+- **Échéance :** à définir.
+- **Hypothèses à vérifier :**
+  - plusieurs générations ont suffisamment d’intérêt et d’accès pour participer ;
+  - le partage entre générations est souhaité sans réduire le contrôle sur les recettes privées ;
+  - une contribution identifiable constitue bien une transmission utile et non seulement une copie technique.
+
+**Justification par la vision :** « Faire de chaque recette un lien entre les générations » est l’ambition centrale. La section sur les usages vise notamment les aînés transmetteurs, les parents et les cuisiniers amateurs, tandis que la promesse porte sur le partage de recette entre générations.
+
+### 3. Accroître la richesse des mémoires familiales conservées dans Bon App’
+
+- **Résultat recherché :** augmenter la part du patrimoine familial conservé avec ses gestes, variantes, anecdotes et médias, plutôt que comme une simple liste d’ingrédients ou une succession d’étapes.
+- **Indicateur :** proportion des recettes familiales enrichies d’au moins un élément de mémoire : anecdote, photo, variante ou autre savoir-faire associé.
+- **Méthode de mesure :** mesurer sur les fiches de recette la présence d’une anecdote, d’une photo, d’une variante ou d’un autre champ de savoir-faire ; échantillonner les fiches pour vérifier la qualité et la pertinence de l’enrichissement.
+- **Valeur initiale :** à mesurer.
+- **Cible :** au moins 25 % des recettes sont partagées ou enrichies, cible de travail déjà formulée dans la section [Comment mesurer les progrès du MVP](#comment-mesurer-les-progrès-du-mvp).
+- **Échéance :** à définir.
+- **Hypothèses à vérifier :**
+  - les familles souhaitent conserver davantage que les seuls ingrédients et étapes ;
+  - les éléments anecdotiques et les variantes peuvent être capturés sans rendre la saisie trop lourde ;
+  - la présence d’un média ou d’une anecdote améliore réellement la mémorisation et la transmission.
+
+**Justification par la vision :** Bon App’ veut préserver les gestes appris, les variantes inventées et les souvenirs qui donnent à chaque recette sa place dans la mémoire familiale. Le MVP prévoit explicitement d’enrichir les recettes d’anecdotes, de variantes et de médias.
+
 ## Principes directeurs
 
 - **Préserver :** donner aux recettes un lieu durable où elles peuvent être retrouvées et documentées.
