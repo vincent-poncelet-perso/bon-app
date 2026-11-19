@@ -99,6 +99,100 @@ Les trois scénarios ci-dessous portent sur **le même périmètre MVP et la mê
 - **Gains de temps :** mesurer séparément le temps utilisateur avant/après pour une tâche comparable et le multiplier uniquement par le nombre d’usages observés. Les temps de recette importée ou lue ne constituent pas automatiquement du temps économisé.
 - **Économies financières :** ne comptabiliser que des dépenses effectivement supprimées ou réduites, sur preuve. À ce stade, aucune n’est identifiée ; la disposition à payer et les recettes éventuelles sont hors de toute prévision chiffrée.
 
+## Risques économiques
+
+« Étayé » qualifie ici un facteur de risque constaté dans les documents, pas sa probabilité ni la certitude qu’il se réalisera. Les niveaux de probabilité ne sont pas estimés ; les conditions de réexamen ou d’arrêt sont à valider avant le pilote.
+
+### Facteurs de risque étayés dans les documents
+
+#### RE-01 — Coûts et délais de réalisation mal estimés
+
+**Statut :** facteur de risque étayé ; dépassement éventuel à vérifier.
+
+- **Hypothèses concernées :** faisabilité technique, effort et délai du MVP — F-01 à F-04 du [registre des hypothèses](./hypotheses.md).
+- **Conséquence possible :** travail de reprise, recours à des services ou compétences non prévus, dépassement du budget ou retard du pilote.
+- **Éléments qui étayent le risque :** la [checklist de démarrage](./getting-started-checklist.md) indique que le dépôt contient de la documentation, mais pas de manifestes, de lockfile ni d’implémentation. La [pile technique](../architecture/technology-stack.md) laisse ouverts plusieurs choix, dont OCR, authentification, hébergement, stockage et synchronisation. Aucun effort ni calendrier n’est fourni.
+- **Informations manquantes :** périmètre technique arrêté, estimations par lot, disponibilité et coût des personnes, devis et dépendances critiques.
+- **Action préventive :** trancher le périmètre et réaliser des essais techniques sur les parcours à risque avant d’autoriser le développement complet ; produire des estimations avec hypothèses explicites.
+- **Signal d’alerte :** une estimation dépend d’un fournisseur non choisi, d’un forfait non vérifié ou de capacités d’équipe non confirmées.
+- **Réexamen ou arrêt à valider :** réexaminer le périmètre si l’estimation dépasse le budget ou la date approuvés. Ne pas engager la réalisation si le coût ou le délai du parcours central ne peut être estimé et accepté.
+
+#### RE-02 — Les coûts variables peuvent croître avec l’usage
+
+**Statut :** exposition documentée ; coût unitaire et effet économique à vérifier.
+
+- **Hypothèses concernées :** coûts de capture, d’OCR, de médias, d’hébergement et d’exploitation ; V-01 et V-02 du [registre des hypothèses](./hypotheses.md).
+- **Conséquence possible :** les imports, le stockage, le trafic, les notifications ou le support coûtent davantage à mesure que l’adoption et la consommation progressent, sans que la valeur ou les revenus compensent cette hausse.
+- **Éléments qui étayent le risque :** la [pile technique](../architecture/technology-stack.md) ne retient pas de fournisseur OCR, d’hébergement ou d’authentification ; elle signale que le stockage et l’exploitation ne sont pas gratuits par défaut. Les [coûts prévisionnels](#coûts-prévisionnels) n’ont ni tarifs ni volumes.
+- **Informations manquantes :** coût par import et par famille active, volumes de stockage et de transfert, rétention, tarifs et évolution des coûts selon l’usage.
+- **Action préventive :** comparer les options locales et hébergées, obtenir les tarifs, puis mesurer les coûts par unité réelle sur la même période que l’adoption et l’usage. Définir les plafonds de dépense et alertes avant le pilote.
+- **Signal d’alerte :** coût unitaire inconnu ou fortement variable, facture supérieure au budget prévu, ou coûts de médias/OCR qui augmentent sans usage récurrent correspondant.
+- **Réexamen ou arrêt à valider :** différer ou retirer la capacité concernée si aucun fournisseur ne respecte le plafond approuvé ou si le coût par usage n’est pas soutenable.
+
+#### RE-03 — Charge d’exploitation et de support non provisionnée
+
+**Statut :** facteurs structurels documentés ; volumes et coûts à vérifier.
+
+- **Hypothèses concernées :** capacité à opérer le produit et à soutenir les familles — X-02 et X-03 du [registre des hypothèses](./hypotheses.md).
+- **Conséquence possible :** coût de support supérieur aux prévisions, incidents non traités, disponibilité réduite ou travail opérationnel ajouté à l’effort produit.
+- **Éléments qui étayent le risque :** la [Definition of Done](./definition-of-done.md) demande des procédures de déploiement, de retour arrière, de sauvegarde, d’alerte et de gestion d’erreur. La [pile technique](../architecture/technology-stack.md) indique que les responsables d’exploitation et plusieurs services restent à définir. Aucun volume de support n’est documenté.
+- **Informations manquantes :** responsable d’exploitation, niveau de service, temps de traitement des demandes, incidents attendus, coûts de maintenance et capacité de support.
+- **Action préventive :** chiffrer le temps d’exploitation séparément des factures d’infrastructure ; définir un propriétaire, des procédures et un support pilote ; mesurer les demandes d’aide par famille active.
+- **Signal d’alerte :** dépendance à une intervention manuelle fréquente, demandes d’aide non résolues, ou absence de responsable et de procédure pour un incident.
+- **Réexamen ou arrêt à valider :** ne pas passer en production sans capacité d’exploitation et de support approuvée ; réexaminer le périmètre si leur charge dépasse les ressources financées.
+
+#### RE-04 — Recouvrement concurrentiel pouvant fragiliser l’acquisition
+
+**Statut :** recouvrement fonctionnel documenté ; impact commercial hypothétique.
+
+- **Hypothèses concernées :** différenciation, acquisition et rétention — V-03 du [registre des hypothèses](./hypotheses.md).
+- **Conséquence possible :** proposition jugée interchangeable, acquisition plus difficile ou coûteuse, pression sur un éventuel prix.
+- **Éléments qui étayent le risque :** la [SWOT provisoire](./veille/analyse-swot-provisoire.md) et la [matrice concurrentielle](./veille/matrice-concurrentielle.md) documentent des solutions qui annoncent déjà l’import, l’organisation et parfois le partage, avec des offres gratuites et payantes. Elles ne démontrent pas l’effet sur le choix des utilisateurs de Bon App’.
+- **Informations manquantes :** bénéfice réellement distinctif pour la cible, canaux d’acquisition, coût d’acquisition, conversion et comparaison des alternatives utilisées en pratique.
+- **Action préventive :** tester le positionnement et le bénéfice familial auprès d’utilisateurs, puis éprouver les canaux d’acquisition envisagés avant d’investir dans une commercialisation étendue.
+- **Signal d’alerte :** les personnes ne distinguent pas Bon App’ des solutions existantes, ou aucun canal d’acquisition mesurable n’est identifié.
+- **Réexamen ou arrêt à valider :** revoir le positionnement ou le canal si les critères d’acquisition approuvés ne sont pas atteints ; ne pas engager de dépenses de commercialisation à grande échelle avant validation.
+
+### Hypothèses économiques à vérifier
+
+#### RE-05 — Adoption et usage récurrent insuffisants
+
+**Statut :** hypothèse à vérifier.
+
+- **Hypothèses concernées :** centralisation, activation, rétention et viabilité — D-01 et V-01 du [registre des hypothèses](./hypotheses.md).
+- **Conséquence possible :** les coûts fixes du MVP sont engagés sans volume d’usage suffisant pour démontrer la valeur ou justifier les coûts récurrents.
+- **Éléments qui étayent le risque :** U-001 exprime le souhait d’un support unique, mais ne rapporte pas d’échec de recherche. Les objectifs de **10 recettes ajoutées le premier mois** et d’**au moins une recette lue par mois** sont des cibles de travail non validées, pas des prévisions. Aucun volume de recrutement ni taux d’activation n’est documenté.
+- **Informations manquantes :** taille et méthode de recrutement de la cohorte, activation des familles, rétention, usages par famille et coût d’acquisition.
+- **Action préventive :** tester le parcours auprès d’une cohorte définie ; mesurer séparément inscriptions, familles activées, ajouts, lectures et retours, en fixant les dénominateurs et seuils avant le test.
+- **Signal d’alerte :** les familles recrutées n’activent pas l’espace ou n’y reviennent pas ; les cibles de travail ne sont pas atteintes selon les critères convenus.
+- **Réexamen ou arrêt à valider :** revoir le bénéfice ou le périmètre si les seuils prédéfinis ne sont pas atteints après les itérations convenues ; arrêter l’investissement dans le périmètre retenu si aucun usage récurrent ni besoin concret n’est confirmé.
+
+#### RE-06 — Bénéfices par usage ou gains de temps non démontrés
+
+**Statut :** bénéfice partiellement étayé pour un cas ; retour économique hypothétique.
+
+- **Hypothèses concernées :** bénéfices de suivi, de recherche, d’adaptation et de transmission — D-02 à D-05 et V-02 du [registre des hypothèses](./hypotheses.md).
+- **Conséquence possible :** le produit apporte moins de valeur qu’attendu, ou la saisie et la correction ajoutent un effort qui compense le bénéfice. Un business case qui monétiserait des gains non mesurés surestimerait le retour.
+- **Éléments qui étayent le risque :** U-001 rapporte parfois perdre le fil et relire une recette ; les fréquences et conséquences sont inconnues. Les difficultés de recherche et de transmission ne sont pas établies. La cible de capture de moins de 10 secondes mesure une durée de parcours, pas le temps gagné par rapport à une méthode actuelle.
+- **Informations manquantes :** situations de référence et après usage, temps par tâche, fréquence réelle, taux de réussite et méthode justifiée pour convertir un temps utilisateur en valeur économique.
+- **Action préventive :** mesurer les mêmes tâches avant et après le test ; distinguer bénéfice utilisateur, temps économisé et économie financière ; ne monétiser le temps que si une méthode et une valeur approuvées existent.
+- **Signal d’alerte :** les gains avancés reposent uniquement sur une cible de performance ou une déclaration, sans observation comparative ; la saisie ou les corrections ajoutent du temps.
+- **Réexamen ou arrêt à valider :** ne pas retenir un retour économique fondé sur ces gains tant qu’ils ne sont pas observés ; revoir ou arrêter le bénéfice ciblé si l’effet n’atteint pas le seuil convenu.
+
+#### RE-07 — Absence de modèle de revenus ou de financement soutenable
+
+**Statut :** hypothèse à vérifier.
+
+- **Hypothèses concernées :** volonté de payer, modèle économique et couverture des coûts — V-01 et V-03 du [registre des hypothèses](./hypotheses.md).
+- **Conséquence possible :** même si l’usage est apprécié, les dépenses d’exploitation, de stockage, de support ou d’acquisition ne sont pas financées.
+- **Éléments qui étayent le risque :** aucun prix, revenu, abonnement, budget, coût actuel remplacé ou volonté de payer n’est documenté. Les modèles tarifaires des comparables ne démontrent ni la demande ni la rentabilité de Bon App’.
+- **Informations manquantes :** modèle de revenus ou financement, fonctions susceptibles d’être payantes, prix acceptable, conversion, marge après coûts variables et dépenses réellement évitées.
+- **Action préventive :** comparer coûts complets et options de financement ; tester la volonté de payer sans la confondre avec une intention déclarée ; ne compter une économie que si une dépense existante est effectivement supprimée.
+- **Signal d’alerte :** le financement repose sur un prix ou une conversion supposés, ou le scénario nécessite des revenus non validés pour couvrir les dépenses récurrentes.
+- **Réexamen ou arrêt à valider :** ne pas étendre le service en production sans financement récurrent approuvé ou preuve d’un modèle soutenable ; réexaminer les fonctionnalités qui portent les coûts si aucun modèle acceptable n’émerge.
+
+Les seuils d’adoption, de coût, de gain et de délai servant à ces conditions sont **à définir et à valider avant le pilote**. Aucun niveau de probabilité ni montant de perte n’est estimé à partir des informations disponibles.
+
 ## Critères Go / No Go
 
 Les seuils d’adoption, de qualité, de coût et de calendrier ne sont pas documentés. Ils doivent être convenus **avant** les tests ; les cibles de travail existantes ne peuvent servir de critères Go qu’après validation de leur définition et pertinence.
