@@ -35,7 +35,7 @@ Rassembler les recettes et les histoires qui les rendent uniques, pour que chaqu
 
 ## Objectifs produit
 
-### 1. Aider les familles à transmettre les recettes et leur contexte
+### 1. Aider les familles à transmettre les recettes et leur contexte (MVP)
 
 - **Résultat recherché :** augmenter la part des familles où une recette et les éléments qui lui donnent son sens — variante, anecdote ou savoir-faire — sont effectivement partagés ou enrichis.
 - **Bénéficiaire :** personnes qui souhaitent transmettre leur patrimoine culinaire et membres de la famille qui le reçoivent.
@@ -44,9 +44,9 @@ Rassembler les recettes et les histoires qui les rendent uniques, pour que chaqu
 - **Échéance :** mesurer au cours des 6 premiers mois après inscription.
 - **Garde-fou :** le partage doit rester explicite, contrôlé et révocable, sans imposer l’ajout d’anecdotes ou de médias.
 
-### 2. Aider les familles à retrouver leurs recettes conservées
+### 2. Aider les familles à retrouver leurs recettes conservées (MVP)
 
-- **Résultat recherché :** augmenter la part des membres qui peuvent retrouver et consulter une recette conservée dans leur espace familial.
+- **Résultat recherché :** augmenter la part des membres qui peuvent retrouver et consulter une recette conservée dans leur espace familial (ouverture directe depuis une liste récente, consultation et recherche simple sur le titre ou les ingrédients).
 - **Bénéficiaire :** personnes qui conservent ou veulent refaire des recettes, et familles qui souhaitent les rassembler.
 - **Indicateur :** part des personnes ou familles actives ayant ajouté une recette consultable et l’ayant relue ; compléter par la réussite d’une tâche de recherche.
 - **Cible :** 10 recettes ajoutées au premier mois après inscription et au moins une recette lue par mois.
@@ -72,9 +72,8 @@ Rassembler les recettes et les histoires qui les rendent uniques, pour que chaqu
 
 ## Première étape : le MVP
 
-Le MVP donne aux familles un premier espace commun pour capturer, organiser, retrouver et partager leurs recettes, tout en les enrichissant de variantes, d’anecdotes et de médias.
+Le MVP permet à une personne de conserver ses recettes en privé dans son espace personnel ou familial, de les ouvrir et de les retrouver avec une navigation simple, puis de les partager explicitement avec un nombre limité de destinataires (5) désigné par son propriétaire. Les ajustements restent limités à du texte libre ; les anecdotes sont facultatives. Aucun destinataire ne peut modifier la recette privée du propriétaire.
 
 ## La suite
 
-Les évolutions futures — de l’accompagnement en cuisine aux livres imprimés — devront prolonger la mémoire et la transmission familiales, sans détourner Bon App’ de sa vocation.
-
+Les médias, variantes structurées, accompagnement en cuisine et livres imprimés ne seront développés qu’après preuve d’adoption du MVP. La recherche avancée pourra être introduite séparément si la navigation simple ne suffit pas.
