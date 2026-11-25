@@ -1,8 +1,7 @@
 # Checklist de démarrage — Bon App’
 
 Cette checklist décrit ce qu’une personne découvrant le dépôt peut consulter et faire à partir
-des fichiers présents. Elle distingue les documents et dossiers existants des technologies et
-fonctionnalités seulement envisagées.
+des fichiers présents. 
 
 ## Documents de référence à consulter
 
@@ -21,17 +20,6 @@ fonctionnalités seulement envisagées.
   prévues.
 - [Definition of Done](./definition-of-done.md) — définit les critères envisagés pour considérer
   un changement terminé.
-
-## Prérequis confirmés par le dépôt
-
-- **Présent :** documentation Markdown et spécification produit PowerPoint.
-- **Présent :** répertoires réservés aux applications, aux packages et aux tests, actuellement
-  sans implémentation.
-- **Non confirmé :** aucun prérequis logiciel de développement n’est établi par un manifeste,
-  une configuration d’installation ou une procédure de démarrage dans le dépôt.
-- **Non installé ou configuré d’après les fichiers suivis :** les technologies citées dans la
-  pile technique sont des cibles documentées, et non des dépendances attestées par des manifestes
-  ou un lockfile.
 
 ## Étapes disponibles aujourd’hui
 
