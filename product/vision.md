@@ -17,7 +17,7 @@ Les recettes familiales sont dispersées entre carnets manuscrits, photos, messa
 Bon App’ s’adresse aux familles et à leurs membres, notamment :
 
 - aux aînés qui souhaitent transmettre leurs recettes et leur savoir-faire ;
-- aux parents qui veulent les retrouver leurs recettes facilement ;
+- aux parents qui veulent retrouver leurs recettes facilement ;
 - aux cuisiniers amateurs qui créent des recettes, les font évoluer et les partagent.
 
 L’expérience doit rester simple et accessible à tous les âges, sans sacrifier la richesse des usages.
@@ -31,7 +31,7 @@ Rassembler les recettes et les histoires qui les rendent uniques, pour que chaqu
 - **Préserver et transmettre la mémoire familiale.** Les familles pourraient partager leurs recettes avec les variantes, anecdotes et savoir-faire associés. Cette ambition est au cœur de la vision.
 - **Rassembler et retrouver ses recettes.** Les personnes et familles pourraient conserver leurs recettes dans un espace commun et les réutiliser plus facilement.
 - **Retrouver ses adaptations.** Les cuisiniers qui modifient une recette pourraient retrouver leurs ajustements lorsqu’ils la refont.
-- **Mieux garder le fil en cuisinant.** Les personnes qui suivent une recette pourraient perdre moins souvent leur place et avoir moins besoin de la relire.
+- **Suivre une recette plus facilement.** Les utilisateurs pourraient se repérer dans les différentes étapes et éviter de revenir en arrière pour retrouver leur progression.
 
 ## Objectifs produit
 
@@ -72,7 +72,7 @@ Rassembler les recettes et les histoires qui les rendent uniques, pour que chaqu
 
 ## Première étape : le MVP
 
-Le MVP permet à une personne de conserver ses recettes en privé dans son espace personnel ou familial, de les ouvrir et de les retrouver avec une navigation simple, puis de les partager explicitement avec un nombre limité de destinataires (5) désigné par son propriétaire. Les ajustements restent limités à du texte libre ; les anecdotes sont facultatives. Aucun destinataire ne peut modifier la recette privée du propriétaire.
+Le MVP permet à une personne de conserver ses recettes en privé dans son espace personnel ou familial, de les ouvrir et de les retrouver avec une navigation simple, puis de les partager explicitement avec les destinataires désigné par son propriétaire. Les ajustements restent limités à du texte libre ; les anecdotes sont facultatives. Aucun destinataire ne peut modifier la recette privée du propriétaire.
 
 ## La suite
 
