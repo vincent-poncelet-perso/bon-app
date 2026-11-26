@@ -1,7 +1,7 @@
 # Matrice concurrentielle — Bon App’
 
 **Périmètre :** six gestionnaires de recettes directs, deux solutions adjacentes et deux substituts généralistes.  
-**Base documentaire :** veille et audit des sources officielles consignés dans [solutions-comparables.md](./solutions-comparables.md). Les pages web et fiches de boutique ci-dessous y ont été consultées le **5 novembre 2026**. Les tarifs de boutiques sont ceux affichés dans les vitrines américaines et peuvent varier selon le pays, la plateforme et le compte.
+**Base documentaire :** pages web et fiches de boutique ci-dessous consultées le **5 novembre 2026**. Les tarifs des boutiques sont ceux affichés dans les vitrines américaines et peuvent varier selon le pays, la plateforme et le compte.
 
 ## Méthode de lecture
 
